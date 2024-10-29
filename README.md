@@ -2,6 +2,9 @@
 
 This project is used in e2e tests for the BlockID project to test that a relying party can get the BlockID score for a user.
 
+Verify your wallet at BlockID: https://blockid.cc
+Live relying party: https://zetfo-paaaa-aaaap-qkmjq-cai.icp0.io
+
 ## Environment Variables
 
 ```
