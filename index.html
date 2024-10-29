@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dummy Relying Party</title>
+  </head>
+  <body>
+    <h1>Dummy relying party for BlockID</h1>
+    <div>
+      <button id="login">Login</button>
+      <p id="login-status">Not logged in</p>
+      <p id="login-info">Make sure you have verified at <a href="https://blockid.cc" target="_blank">BlockID</a> before starting the verification.</p>
+
+      <div id="vc-container" class="hidden">
+        <form id="request-blockid-score">
+          <input type="number" id="score" name="score" value="13" placeholder="Enter the score to check" />
+          <button type="submit">Start verification</button>
+        </form>
+      </div>
+      <h4>Encoded Credential</h4>
+      <pre id="vc-result">-</pre>
+      <h4>Decoded Presentation</h4>
+      <pre id="vc-presentation">-</pre>
+      <h4>Decoded Credentials</h4>
+      <p>Alias credential</p>
+      <pre id="vc-alias">-</pre>
+      <p>Requested credential</p>
+      <pre id="vc-credential">-</pre>
+    </div>
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
