@@ -1,7 +1,7 @@
 import { AuthClient } from "@dfinity/auth-client";
 import { decodeJwt } from "jose";
 import { requestVerifiablePresentation, type VerifiablePresentationResponse } from "@dfinity/verifiable-credentials/request-verifiable-presentation";
-
+import { BlockID } from "@blockid/sdk";
 const II_URL = 'https://identity.ic0.app';
 const ISSUER_ORIGIN = 'https://blockid.cc';
 const ISSUER_CANISTER_ID = 'znqos-ziaaa-aaaap-qkmia-cai';
@@ -28,7 +28,13 @@ attendeeVCForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
   const formData = new FormData(attendeeVCForm);
   const score = formData.get("score") as string;
-  requestCredentials("VerifiedScore", { score: parseInt(score) });
+  // requestCredentials("VerifiedScore", { score: parseInt(score) });
+  const blockid = new BlockID();
+  console.log('start verifyScore');
+  const credential = await blockid.verifyScore({ required: parseInt(score), principal: authClient.getIdentity().getPrincipal().toText(), vcFlow: true });
+  console.log('end verifyScore');
+  console.log('credential', credential);
+  
 });
 
 const requestCredentials = async (credentialType: string, credentialArgs: Record<string, string | number>) => {
